@@ -11,25 +11,25 @@ function updatePreview(iframeId, cssEditorId) {
         <head>
             <style>
                 /* Base styles for the card */
-                body { margin: 0; font-family: sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; background-color: #f0f2f5; }
+                body { margin: 0; font-family: sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; background-color: lightgray; }
                 .preview-card {
                     width: 100%;
                     max-width: 350px;
-                    background-color: #f8f9fa;
+                    background-color: white;
                     border-radius: 12px;
-                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    box-shadow: 0 4px 8px black;
                     overflow: hidden;
                     transition: all 0.3s ease-in-out;
-                    border: 1px solid #dee2e6;
+                    border: 1px solid lightgray;
                 }
                 .preview-card-image {
                     width: 100%;
                     height: 200px;
-                    background-color: #ced4da;
+                    background-color: lightgray;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    color: #6c757d;
+                    color: gray;
                     font-size: 1.2rem;
                     font-weight: bold;
                     text-align: center;
@@ -43,19 +43,19 @@ function updatePreview(iframeId, cssEditorId) {
                 .preview-card-title {
                     font-size: 1.5rem;
                     font-weight: 600;
-                    color: #212529;
+                    color: darkgray;
                     margin: 0;
                 }
                 .preview-card-text {
                     font-size: 1rem;
                     line-height: 1.5;
-                    color: #495057;
+                    color: darkgray;
                     margin: 0;
                 }
                 .preview-card-button {
                     padding: 0.75rem 1.5rem;
-                    background-color: #007bff;
-                    color: #fff;
+                    background-color: blue;
+                    color: white;
                     text-decoration: none;
                     border-radius: 8px;
                     text-align: center;
@@ -65,7 +65,7 @@ function updatePreview(iframeId, cssEditorId) {
                     cursor: pointer;
                 }
                 .preview-card-button:hover {
-                    background-color: #0056b3;
+                    background-color: darkblue;
                 }
                 
                 /*
@@ -88,8 +88,7 @@ function updatePreview(iframeId, cssEditorId) {
             </div>
         </body>
         </html>
-    `;
-    
+    `;    
     // Set the iframe's content
     livePreview.srcdoc = defaultHtml;
 }
@@ -100,8 +99,7 @@ function setupPlaygroundPage() {
     const clearButton = document.getElementById('clear-playground-button');
 
     // Initial CSS code for the playground page
-    const initialCss = `/* Start styling here! */
-.preview-card {
+    const initialCss = `/* Start styling here! */.preview-card {
   background-color: lightblue;
   border: 2px solid blue;
 }
@@ -112,8 +110,7 @@ function setupPlaygroundPage() {
 
 .preview-card-title {
   color: black;
-}`;
-    
+}`;    
     // Function to clear the playground editor
     function clearEditor() {
         cssEditor.value = initialCss;
@@ -133,80 +130,55 @@ function setupPlaygroundPage() {
 const challenges = [
     {
         title: "Challenge 1: Center the Card",
-        description: "Your goal is to perfectly center the card in the middle of the page using CSS. You can use flexbox on the `body` element or any other method you prefer.",
-        initialCss: `/* Use the 'body' selector to center the card. */
-body {
+        description: "Your goal is to perfectly center the card in the middle of the page using CSS. You can use flexbox on the body element or any other method you prefer.",
+        initialCss: `/* Use the 'body' selector to center the card. */body {
     
-}
-`,
-        solutionCss: `/* Use the 'body' selector to center the card. */
-body {
+}`,        solutionCss: `/* Use the 'body' selector to center the card. */body {
     display: flex;
     justify-content: center;
     align-items: center;
-}`
-    },
+}`    },
     {
         title: "Challenge 2: Style the Button",
-        description: "The card has a button with the class `.preview-card-button`. Change its background to your favorite color and add a rounded corner with a `border-radius` of `8px`.",
-        initialCss: `/* Style the button here! */
-.preview-card-button {
+        description: "The card has a button with the class .preview-card-button. Change its background to your favorite color and add a rounded corner with a border-radius of 8px.",
+        initialCss: `/* Style the button here! */.preview-card-button {
     
-}
-`,
-        solutionCss: `/* Style the button here! */
-.preview-card-button {
-    background-color: #00c7e2;
+}`,        solutionCss: `/* Style the button here! */.preview-card-button {
+    background-color: cyan;
     border-radius: 8px;
-}`
-    },
+}`    },
     {
         title: "Challenge 3: Create a Hover Effect",
-        description: "When the user hovers over the card, you want it to stand out. Add a hover effect to the `.preview-card` to change its `box-shadow` to a darker shade.",
-        initialCss: `/* Add the hover effect here! */
-.preview-card:hover {
+        description: "When the user hovers over the card, you want it to stand out. Add a hover effect to the .preview-card to change its box-shadow to a darker shade.",
+        initialCss: `/* Add the hover effect here! */.preview-card:hover {
     
-}
-`,
-        solutionCss: `/* Add the hover effect here! */
-.preview-card:hover {
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-}`
-    },
+}`,        solutionCss: `/* Add the hover effect here! */.preview-card:hover {
+    box-shadow: 0 10px 20px black;
+}`    },
     {
         title: "Challenge 4: Change Font & Color",
-        description: "The title and text are a bit plain. Change the font family of the `.preview-card-title` to `Poppins` and the color of the `.preview-card-text` to a dark gray.",
-        initialCss: `/* Style the typography here! */
-.preview-card-title {
+        description: "The title and text are a bit plain. Change the font family of the .preview-card-title to Poppins and the color of the .preview-card-text to a dark gray.",
+        initialCss: `/* Style the typography here! */.preview-card-title {
     
 }
 
 .preview-card-text {
     
-}
-`,
-        solutionCss: `/* Style the typography here! */
-.preview-card-title {
+}`,        solutionCss: `/* Style the typography here! */.preview-card-title {
     font-family: 'Poppins', sans-serif;
 }
 
 .preview-card-text {
-    color: #495057;
-}`
-    },
+    color: darkgray;
+}`    },
     {
         title: "Challenge 5: Add a Shadow",
-        description: "Give the card a more three-dimensional look. Add a `box-shadow` to the `.preview-card` element with a value of `0 10px 20px rgba(0,0,0,0.3)`.",
-        initialCss: `/* Add a shadow to the card here! */
-.preview-card {
+        description: "Give the card a more three-dimensional look. Add a box-shadow to the .preview-card element with a value of 0 10px 20px black.",
+        initialCss: `/* Add a shadow to the card here! */.preview-card {
     
-}
-`,
-        solutionCss: `/* Add a shadow to the card here! */
-.preview-card {
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-}`
-    }
+}`,        solutionCss: `/* Add a shadow to the card here! */.preview-card {
+    box-shadow: 0 10px 20px black;
+}`    }
 ];
 
 let currentChallengeIndex = 0; // Track the current challenge
@@ -343,5 +315,3 @@ document.addEventListener('DOMContentLoaded', () => {
         setupChallengesPage();
     }
 });
-
-
