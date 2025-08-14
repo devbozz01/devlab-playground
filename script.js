@@ -231,7 +231,7 @@ function checkSolution() {
     const nextChallengeButton = document.getElementById('next-challenge-button');
     
     // Normalize whitespace for a more robust comparison
-    const userCode = cssEditor.value.trim().replace(/\s+/g, ' '); 
+    const userCode = cssEditor.value.trim().replace(/\s+/g, ' ');
     const solutionCode = challenges[currentChallengeIndex].solutionCss.trim().replace(/\s+/g, ' ');
 
     if (userCode === solutionCode) {
@@ -264,50 +264,61 @@ function nextChallenge() {
     }
 }
 
-function setupChallengesPage() {
+// IMPORTANT: Moved loadChallenge and showSolution outside of setupChallengesPage so they are accessible
+function loadChallenge(index) {
     const challengeList = document.getElementById('challenge-list');
     const challengeTitle = document.getElementById('challenge-title');
     const challengeDescription = document.getElementById('challenge-description');
+    const cssEditor = document.getElementById('css-editor-challenge');
+    const nextChallengeButton = document.getElementById('next-challenge-button');
+    
+    currentChallengeIndex = index;
+    const challenge = challenges[index];
+    challengeTitle.textContent = challenge.title;
+    challengeDescription.textContent = challenge.description;
+    cssEditor.value = challenge.initialCss;
+    
+    // Remove 'active' class from all list items
+    document.querySelectorAll('#challenge-list li').forEach(item => {
+        item.classList.remove('active-challenge');
+    });
+    // Add 'active' class to the current list item
+    document.querySelector(`[data-challenge-id="${index}"]`).classList.add('active-challenge');
+    
+    // Update the preview
+    updatePreview('challenge-preview-iframe', 'css-editor-challenge');
+    
+    // Hide any existing message box or "Next Challenge" button
+    document.getElementById('challenge-message').classList.remove('visible');
+    nextChallengeButton.style.display = 'none';
+}
+
+function showSolution() {
+    const currentChallenge = challenges[currentChallengeIndex];
+    const cssEditor = document.getElementById('css-editor-challenge');
+    
+    // Set the editor value to the solution code
+    cssEditor.value = currentChallenge.solutionCss;
+    
+    // Update the preview
+    updatePreview('challenge-preview-iframe', 'css-editor-challenge');
+}
+
+function setupChallengesPage() {
+    const challengeList = document.getElementById('challenge-list');
     const cssEditor = document.getElementById('css-editor-challenge');
     const showSolutionButton = document.getElementById('show-solution-button');
     const checkSolutionButton = document.getElementById('check-challenge-button');
     const clearButton = document.getElementById('clear-challenge-button');
     const nextChallengeButton = document.getElementById('next-challenge-button');
-    
-    // Function to load a specific challenge
-    function loadChallenge(index) {
-        currentChallengeIndex = index;
-        const challenge = challenges[index];
-        challengeTitle.textContent = challenge.title;
-        challengeDescription.textContent = challenge.description;
-        cssEditor.value = challenge.initialCss;
-        
-        // Remove 'active' class from all list items
-        document.querySelectorAll('#challenge-list li').forEach(item => {
-            item.classList.remove('active-challenge');
-        });
-        // Add 'active' class to the current list item
-        document.querySelector(`[data-challenge-id="${index}"]`).classList.add('active-challenge');
-        
-        // Update the preview
-        updatePreview('challenge-preview-iframe', 'css-editor-challenge');
-        
-        // Hide any existing message box or "Next Challenge" button
-        document.getElementById('challenge-message').classList.remove('visible');
-        nextChallengeButton.style.display = 'none';
-    }
-    
-    // Function to show the solution for the current challenge
-    function showSolution() {
-        const currentChallenge = challenges[currentChallengeIndex];
-        const cssEditor = document.getElementById('css-editor-challenge');
-        
-        // Set the editor value to the solution code
-        cssEditor.value = currentChallenge.solutionCss;
-        
-        // Update the preview
-        updatePreview('challenge-preview-iframe', 'css-editor-challenge');
-    }
+
+    // Dynamically generate challenge list items
+    challenges.forEach((challenge, index) => {
+        const li = document.createElement('li');
+        li.textContent = challenge.title;
+        li.setAttribute('data-challenge-id', index);
+        challengeList.appendChild(li);
+    });
 
     // Add click listeners to the challenge list items
     challengeList.addEventListener('click', (event) => {
@@ -340,3 +351,4 @@ document.addEventListener('DOMContentLoaded', () => {
         setupChallengesPage();
     }
 });
+
