@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- This tells the computer how to read all the different letters and symbols -->
+    <meta charset="UTF-8">
+    <!-- This is super important for making the website look right on phones! -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- This is the title of the page you see in the browser tab -->
+    <title>DevLab - Challenges</title>
+    <!-- We're adding some cool fonts from the internet here -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <!-- We're adding the icon library here -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- This links our main stylesheet to the page to make it look good -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="challenges-page">
+
+    <!-- This is the top part of the page with the website name and navigation buttons -->
+    <header>
+        <div class="logo">DevLab</div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+                <li><a href="playground.html"><i class="fas fa-code"></i>Playground</a></li>
+                <li><a href="challenges.html" class="active"><i class="fas fa-trophy"></i>Challenges</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- This is the main part of the Challenges page -->
+    <main class="main-challenges">
+        <!-- This column is for the list of different challenges -->
+        <div class="challenge-sidebar">
+            <h2 class="section-title">Challenges</h2>
+            <ul id="challenge-list">
+                <!-- Each of these list items is a button for a different challenge -->
+                <li data-challenge-id="0">Challenge 1: Center the Card</li>
+                <li data-challenge-id="1">Challenge 2: Style the Button</li>
+                <li data-challenge-id="2">Challenge 3: Create a Hover Effect</li>
+                <li data-challenge-id="3">Challenge 4: Change Font & Color</li>
+                <li data-challenge-id="4">Challenge 5: Add a Shadow</li>
+            </ul>
+        </div>
+        <!-- This column shows the instructions and the code editor for the current challenge -->
+        <div class="challenge-content">
+            <div class="challenge-display">
+                <h2 id="challenge-title"></h2>
+                <!-- This is where the description of the challenge will go -->
+                <p id="challenge-description"></p>
+                <div class="editor-container">
+                    <div class="editor-header">
+                        <!-- These are the little red, yellow, and green dots at the top of the editor -->
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span style="margin-left: auto;">styles.css</span>
+                    </div>
+                    <!-- This is the text box where you'll write your CSS code for the challenge -->
+                    <textarea id="css-editor-challenge" placeholder="Write your CSS here..."></textarea>
+                </div>
+                <div class="challenge-buttons">
+                    <!-- This button clears all the code you wrote -->
+                    <button id="clear-challenge-button" class="cta-button clear-button"><i class="fas fa-eraser"></i> Clear</button>
+                    <!-- This button shows you the answer if you get stuck -->
+                    <button id="show-solution-button" class="cta-button solution-button">Show Solution</button>
+                    <!-- This button will check if your code is correct -->
+                    <button id="check-challenge-button" class="cta-button">Check My Solution</button>
+                </div>
+                <!-- This box will pop up with messages about your code -->
+                <div id="challenge-message" class="message-box"></div>
+                <!-- This button takes you to the next challenge -->
+                <button id="next-challenge-button" class="cta-button next-button" style="display: none;">Next Challenge</button>
+            </div>
+            <div class="preview-column">
+                <h2 class="section-title">Live Preview</h2>
+                <div class="preview-container">
+                    <!-- This is the live preview area where you can see your CSS in action! -->
+                    <iframe class="live-preview" id="challenge-preview-iframe"></iframe>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- This links our JavaScript file to the page for things like making the buttons work -->
+    <script src="script.js"></script>
+</body>
+</html>
