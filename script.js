@@ -312,14 +312,6 @@ function setupChallengesPage() {
     const clearButton = document.getElementById('clear-challenge-button');
     const nextChallengeButton = document.getElementById('next-challenge-button');
 
-    // Dynamically generate challenge list items
-    challenges.forEach((challenge, index) => {
-        const li = document.createElement('li');
-        li.textContent = challenge.title;
-        li.setAttribute('data-challenge-id', index);
-        challengeList.appendChild(li);
-    });
-
     // Add click listeners to the challenge list items
     challengeList.addEventListener('click', (event) => {
         const target = event.target;
@@ -351,4 +343,5 @@ document.addEventListener('DOMContentLoaded', () => {
         setupChallengesPage();
     }
 });
+
 
